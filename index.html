@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Anniversary Nong Auan </title>
+  
+  <!-- Google Fonts: Prompt & Mali & Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Mali:wght@300;400;600;700&family=Prompt:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas for floating romantic particles / hearts -->
+  <canvas id="heartCanvas"></canvas>
+
+
+
+  <!-- Main Scene Container -->
+  <main class="main-stage">
+    
+    <!-- Title / Hint Banner above envelope -->
+    <div class="intro-banner" id="introBanner">
+      <div class="badge-pill">
+        <span>Special Anniversary Letter</span> 
+      </div>
+      <h1 class="main-title">มีจดหมายสำคัญถึงอ้วน </h1>
+      <p class="sub-hint">แตะที่ซองจดหมายแล้วอ่านนะจ๊ะ</p>
+    </div>
+
+    <!-- The 3D Interactive Envelope Component -->
+    <div class="envelope-wrapper" id="envelopeWrapper">
+      <div class="envelope" id="envelope">
+        
+        <!-- Back inside flap of envelope -->
+        <div class="envelope-inside"></div>
+
+        <!-- The Letter Sheet (slides up) -->
+        <div class="letter-sheet" id="letterSheet">
+          <div class="letter-preview">
+            <div class="letter-stamp">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="letter-mini-title" id="miniLetterTitle">Happy Anniversary 💖</div>
+            <div class="letter-mini-text">กดเพื่ออ่านจดหมายฉบับเต็ม...</div>
+          </div>
+        </div>
+
+        <!-- Envelope Front Body (pockets and sides) -->
+        <div class="envelope-back-wall"></div>
+        <div class="envelope-pocket-left"></div>
+        <div class="envelope-pocket-right"></div>
+        <div class="envelope-pocket-bottom"></div>
+
+        <!-- Envelope Top Flap (folds open) -->
+        <div class="envelope-flap" id="envelopeFlap">
+          <!-- Wax Seal positioned at the tip of the flap -->
+          <div class="wax-seal" id="waxSeal" title="กดเพื่อเปิดผนึก">
+            <div class="seal-inner">
+              <i class="fa-solid fa-heart seal-heart"></i>
+            </div>
+            <span class="seal-hint-text">เปิดตรงนี้</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sparkle click glow -->
+      <div class="glow-shadow"></div>
+    </div>
+
+  </main>
+
+  <!-- Full Letter Reading Modal / Expanded View -->
+  <div class="letter-modal-backdrop" id="letterModal">
+    <div class="letter-paper">
+      
+      <!-- Close / Pack back to envelope button -->
+      <button class="close-letter-btn" id="closeLetterBtn" title="พับเก็บใส่ซอง">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Tape decoration -->
+      <div class="washi-tape washi-top"></div>
+
+      <!-- Letter Content Scrollable Area -->
+      <div class="letter-inner-content">
+        
+        <!-- Header Section -->
+        <div class="letter-header">
+          <div class="letter-date-tag" id="displayLetterDate">
+            <i class="fa-regular fa-calendar-heart"></i>
+            <span id="dateTextDisplay">17 พฤศจิกายน</span>
+          </div>
+          <h2 class="letter-title" id="letterTitle">Happy Anniversary นะจ๊ะ 💕</h2>
+          <div class="letter-to">ถึง: <span class="highlight-name" id="receiverName">น้องอ้วน</span></div>
+        </div>
+
+        <div class="divider-hearts">
+          <span></span><i class="fa-solid fa-heart"></i><span></span>
+        </div>
+
+        <!-- Polaroid Photos Section -->
+        <div class="polaroid-gallery" id="polaroidGallery">
+          <div class="polaroid-card polaroid-tilt-left">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrapper">
+              <img id="photo1" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&auto=format&fit=crop&q=60" alt="Our Memory 1">
+            </div>
+            <div class="polaroid-caption" id="caption1">รอยยิ้มแรกที่ทำให้ตกหลุมรัก 🤍</div>
+          </div>
+
+          <div class="polaroid-card polaroid-tilt-right">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrapper">
+              <img id="photo2" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&auto=format&fit=crop&q=60" alt="Our Memory 2">
+            </div>
+            <div class="polaroid-caption" id="caption2">ทุกที่มีเธอ คือที่ที่มีความสุขที่สุด ✨</div>
+          </div>
+
+          <div class="polaroid-card polaroid-tilt-center">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-img-wrapper">
+              <img id="photo3" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=500&auto=format&fit=crop&q=60" alt="Our Memory 3">
+            </div>
+            <div class="polaroid-caption" id="caption3">ขอบคุณที่จับมือกันมาเสมอนะ 🫶</div>
+          </div>
+        </div>
+
+        <!-- Main Letter Body Text -->
+        <div class="letter-body" id="letterBody">
+          <p>
+            สุขสันต์วันครบรอบนะครับคนเก่ง! เวลาผ่านไปเร็วมากๆ เลยนะ แป๊บๆ เราก็เดินทางร่วมกันมาจนถึงวันนี้แล้ว 
+            อยากบอกว่าทุกๆ ช่วงเวลาที่มีเธออยู่ข้างๆ มันมีความหมายและพิเศษกับเค้ามากที่สุดเลย
+          </p>
+          <p>
+            ขอบคุณสำหรับรอยยิ้ม ความอบอุ่น ความเข้าใจ และความน่ารักที่มอบให้กันมาตลอดนะ 
+            ไม่ว่าวันไหนที่เหนื่อยหรือท้อ แค่ได้คุยกับเธอ ได้เห็นหน้าเธอ ก็ทำให้เค้ายิ้มได้และมีพลังขึ้นมาทันทีเลย
+          </p>
+          <p>
+            ขอให้ความรักของเราเติบโตขึ้นเรื่อยๆ ไปด้วยกัน สัญญานะว่าจะคอยดูแล จับมือเธอไว้แน่นๆ 
+            และไม่ว่าจะเจอเรื่องอะไร เราจะก้าวผ่านมันไปด้วยกันเสมอนะครับ
+          </p>
+          <p class="letter-love-quote">
+            "You are my today and all of my tomorrows." 🌷
+          </p>
+        </div>
+
+        <!-- Signature Section -->
+        <div class="letter-signature">
+          <p>รักอ้วนนะจ๊ะ</p>
+          <div class="signature-name" id="senderName">จาก... คนที่รักเธอที่สุดในโลก</div>
+        </div>
+
+        <!-- Interactive Love Buttons at bottom -->
+        <div class="letter-actions">
+          <button class="love-action-btn pulse-button" id="hugBtn">
+            <i class="fa-solid fa-hands-holding-child"></i>
+            <span>ขอกอด 1 ที 💕</span>
+            <span class="hug-counter" id="hugCount">0</span>
+          </button>
+          <button class="love-action-btn secondary-btn" id="packBackBtn">
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <span>พับเก็บใส่ซอง ✉️</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="washi-tape washi-bottom"></div>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
